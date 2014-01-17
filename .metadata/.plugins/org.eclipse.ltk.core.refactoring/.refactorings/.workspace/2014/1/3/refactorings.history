@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Interleave_String&apos;" deleteContents="true" description="Delete resource &apos;Interleave_String&apos;" element1="/Interleave_String" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1389939213120"/>
+</session>
