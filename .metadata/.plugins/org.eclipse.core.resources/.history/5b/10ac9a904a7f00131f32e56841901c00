@@ -1,5 +1,5 @@
 #include<string>
-#include<assert.h>
+#include<iostream>
 
 using namespace std;
 
@@ -58,7 +58,7 @@ void test()
 	string s1("ef");
 	string s2("gh");
 	string s3("ehgf");
-	assert(isInterleave(s1, s2, s3) == false);
+	cout<<isInterleave(s1, s2, s3)<<endl;
 }
 
 int main()

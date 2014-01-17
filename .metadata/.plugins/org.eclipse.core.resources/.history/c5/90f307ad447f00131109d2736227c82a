@@ -1,5 +1,4 @@
 #include<string>
-#include<assert.h>
 
 using namespace std;
 
@@ -15,9 +14,9 @@ bool isInterleave(string s1, string s2, string s3) {
         //initial case: length = 0
         old_DP[0] = true;
 
-        for(unsigned i = 1; i <= s3.size(); i++)
+        for(int i = 1; i <= s3.size(); i++)
         {
-            for(unsigned j = 0; j <= i && j <= s1.size(); j++)
+            for(int j = 0; j <= i && j <= s1.size(); j++)
             {
                 //corner cases
                 if(j == 0)
@@ -32,7 +31,7 @@ bool isInterleave(string s1, string s2, string s3) {
 
                 if(s2.size() < i - j) { new_DP[j] = false; continue;}
 
-                new_DP[j] = false;
+                new_DP[j] == false;
 
                 if(s3[i-1] == s1[j-1])
                 {
@@ -58,10 +57,5 @@ void test()
 	string s1("ef");
 	string s2("gh");
 	string s3("ehgf");
-	assert(isInterleave(s1, s2, s3) == false);
-}
-
-int main()
-{
-	test();
+	cout<<isInterleave(string s1, string s2, string s3)<<endl;
 }
