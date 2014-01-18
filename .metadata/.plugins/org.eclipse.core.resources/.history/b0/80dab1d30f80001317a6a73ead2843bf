@@ -53,15 +53,15 @@ bool isInterleave(string s1, string s2, string s3) {
         return old_DP[s1.size()];
     }
 
-//void test()
-//{
-//	string s1("ef");
-//	string s2("gh");
-//	string s3("ehgf");
-//	assert(isInterleave(s1, s2, s3) == false);
-//}
-//
-//int main()
-//{
-//	test();
-//}
+void test()
+{
+	string s1("ef");
+	string s2("gh");
+	string s3("ehgf");
+	assert(isInterleave(s1, s2, s3) == false);
+}
+
+int main()
+{
+	test();
+}
