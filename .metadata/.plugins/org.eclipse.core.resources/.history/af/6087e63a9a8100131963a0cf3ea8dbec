@@ -47,14 +47,14 @@ string minWindow(string S, string T) {
         return len == INT_MAX ? "" : S.substr(start,len);
     }
 
-//void test()
-//{
-//	string S("ADOBECODEBANC");
-//	string T("ABC");
-//	cout<<minWindow(S, T)<<endl;
-//}
-//
-//int main()
-//{
-//	test();
-//}
+void test()
+{
+	string S("ADOBECODEBANC");
+	string T("ABC");
+	cout<<minWindow(S, T)<<endl;
+}
+
+int main()
+{
+	test();
+}
