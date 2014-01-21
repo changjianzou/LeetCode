@@ -41,8 +41,8 @@ void findMedian(int A[], int m, int B[], int n, int& m1, int& m2, int k)
     void test()
     {
     	int m = 2, n = 2;
-    	int A[2] = {1,4};
-    	int B[2] = {2,3};
+    	int A[1] = {1,4};
+    	int B[3] = {2,3,4};
     	cout<<findMedianSortedArrays(A,m,B,n)<<endl;
     }
 

@@ -10,7 +10,6 @@ void findMedian(int A[], int m, int B[], int n, int& m1, int& m2, int k)
 
      int i = (int)((double) (m*(k-1)) / (double)(m+n) ), j = k - 1 - i;
      if(i >= m){i = m - 1; j = k - m;}
-     if(j >= n){j = n - 1; i = k - n;}
 
      if(A[i] >= B[j])
      {
@@ -40,9 +39,9 @@ void findMedian(int A[], int m, int B[], int n, int& m1, int& m2, int k)
 
     void test()
     {
-    	int m = 2, n = 2;
-    	int A[2] = {1,4};
-    	int B[2] = {2,3};
+    	int m = 1, n = 3;
+    	int A[1] = {1};
+    	int B[3] = {2,3,4};
     	cout<<findMedianSortedArrays(A,m,B,n)<<endl;
     }
 
