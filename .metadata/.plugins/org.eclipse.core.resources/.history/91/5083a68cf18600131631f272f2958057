@@ -1,0 +1,112 @@
+#include<stdlib.h>
+#include<iostream>
+
+using namespace std;
+
+struct ListNode {
+     int val;
+     ListNode *next;
+     ListNode(int x) : val(x), next(NULL) {}
+};
+
+void print(ListNode* p);
+
+    void partition(ListNode*head, ListNode** left_head, ListNode** left_end, ListNode** right_head)
+    {
+        //virtual nodes
+        *left_head = new ListNode(0), *right_head = new ListNode(0);
+
+        ListNode* left = *left_head, *right = *right_head;
+
+        int pivote = head == NULL ? 0 : head->val;
+
+        while(head)
+        {
+            if(head->val >= pivote)
+            {
+                right->next = head;
+                right = right->next;
+            }else{
+                left->next = head;
+                left = left->next;
+            }
+
+            head = head->next;
+        }
+
+        left->next = NULL; right->next = NULL;
+
+        *left_head = (*left_head)->next;
+        *left_end = (*left_head) ? left : NULL;
+        *right_head = (*right_head)->next;
+    }
+
+    //recursive using quick sort
+    ListNode *sortList(ListNode *head) {
+
+        if(head == NULL || head->next == NULL) return head;
+
+        ListNode* left_head = NULL, *left_end = NULL, *right_head = NULL;
+
+        partition(head, &left_head, &left_end, &right_head);
+
+        print(left_head);
+        print(right_head);
+
+        ListNode* mid = right_head;
+
+        left_head = sortList(left_head);
+
+
+        right_head = sortList(mid->next);
+
+        if(left_end) left_end->next = mid;
+
+        mid->next = right_head;
+        print(mid);
+
+        return left_head ? left_head : mid;
+    }
+
+    void print(ListNode* p)
+    {
+    	if(!p) cout<<"empty";
+
+    	while(p){
+    		cout<<p->val<<" "; p = p->next;
+    	}
+
+    	cout<<endl;
+    }
+
+    void test()
+    {
+    	int n = 6;
+    	int a[] = {2,3,2,1,3,2,1,1};
+    	ListNode* head = new ListNode(0);
+    	ListNode* p = head;
+
+    	for(int i = 0; i < n; i++)
+    	{
+    		p->next = new ListNode(a[i]);
+    		p = p->next;
+    	}
+
+    	head = sortList(head);
+
+    	cout<<"sorted complete!"<<endl;
+
+    	for(int i = 0; i <= n; i++)
+    	{
+    		cout<<"sss ";
+    		cout<<head->val<<" ";
+    		head = head->next;
+    	}
+    	cout<<endl;
+    }
+
+    int main()
+    {
+    	test();
+    }
+
