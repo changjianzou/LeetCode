@@ -1,0 +1,48 @@
+#include<string>
+#include<stacl>
+using namespace std;
+int str2num(string& str)
+    {
+        int num = 0;
+
+        int i = str[0] == '-' ? 1 : 0;
+
+        bool sign = str[0] == '-' ? false : true;
+
+        for(; i < str.size(); i++)
+        {
+            num *= 10; num += str[i] - '0';
+        }
+
+        return sign ? num : -num;
+    }
+
+    int evalRPN(vector<string> &tokens) {
+
+        stack<int> workingS;
+
+        int op1 = 0, op2 = 0;
+
+        for(int i = 0; i < tokens.size(); i++)
+        {
+            if( tokens[i][0] == '-' || (tokens[i][0] >= '0' && tokens[i][0] <= '9') )
+            {
+                workingS.push(str2num(tokens[i]));
+            }else{
+                op2 = workingS.top(); workingS.pop();
+                op1 = workingS.top(); workingS.pop();
+
+                if(tokens[i] == "+"){
+                    workingS.push(op1 + op2);
+                }else if(tokens[i] == "-"){
+                    workingS.push(op1 - op2);
+                }else if(tokens[i] == "*"){
+                    workingS.push(op1*op2);
+                }else{
+                    workingS.push(op1/op2);
+                }
+            }
+        }
+
+        return workingS.top();
+    }
