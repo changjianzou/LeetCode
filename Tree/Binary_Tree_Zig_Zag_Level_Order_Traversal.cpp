@@ -13,54 +13,55 @@ struct TreeNode {
 };
 
 
-    //using bfs
-    vector<vector<int> > zigzagLevelOrder(TreeNode *root) {
+//using bfs
+   vector<vector<int> > zigzagLevelOrder(TreeNode *root) {
 
-        vector<vector<int>> ret;
+       vector<vector<int>> ret;
 
-        if(root == NULL) return ret;
+       if(root == NULL) return ret;
 
-        vector<int> temp;
+       vector<int> temp;
 
-        queue<TreeNode*> Q;
+       queue<TreeNode*> Q;
 
-        Q.push(root);
+       Q.push(root);
 
-        temp.push_back(root->val); ret.push_back(temp); temp.clear();
+       int cnt1 = 1, cnt2 = 0;
 
-        int cnt1 = 1, cnt2 = 0;
+       TreeNode* cur = NULL;
 
-        TreeNode* cur = NULL;
+       bool odd = true;
 
-        bool even = true;
+       while(Q.empty() == false)
+       {
+           cur = Q.front();
 
-        while(Q.empty() == false)
-        {
-            cur = Q.front();
+           Q.pop();
 
-            Q.pop();
+           cnt1--;
 
-            cnt1--;
+           temp.push_back(cur->val);
 
-            if(cur->left)
-            {
-                cnt2++; Q.push(cur->left); temp.push_back(cur->left->val);
-            }
+           if(cur->left)
+           {
+               cnt2++; Q.push(cur->left);
+           }
 
-            if(cur->right)
-            {
-                cnt2++; Q.push(cur->right); temp.push_back(cur->right->val);
-            }
+           if(cur->right)
+           {
+               cnt2++; Q.push(cur->right);
+           }
 
-            if(cnt1 == 0)
-            {
-                if(even && cnt2) reverse(temp.begin(), temp.end());
+           if(cnt1 == 0)
+           {
+               if( !odd ) reverse(temp.begin(), temp.end());
 
-                if(cnt2) ret.push_back(temp);
+               ret.push_back(temp);
 
-                cnt1 = cnt2; cnt2 = 0; temp.clear(); even = 1^even;
-            }
-        }
+               cnt1 = cnt2; cnt2 = 0; temp.clear(); odd = 1^odd;
+           }
 
-        return ret;
-    }
+       }
+
+       return ret;
+   }
