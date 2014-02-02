@@ -1,0 +1,18 @@
+  ListNode* reverse(ListNode*head)
+    {
+        if( !head ) return head;
+
+        ListNode* dummy = new ListNode(0), *p = head;
+
+        dummy->next = head;
+
+        while( p )
+        {
+            temp = p->next;
+            p->next = dummy->next;
+            dummy->next = p;
+            p = temp;
+        }
+
+        return dummy->next;
+    }
