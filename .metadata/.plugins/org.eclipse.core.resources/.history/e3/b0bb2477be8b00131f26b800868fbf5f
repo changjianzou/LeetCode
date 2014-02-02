@@ -1,6 +1,5 @@
 #include<vector>
 #include<algorithm>
-
 using namespace std;
 
 void swap(int i, int j, vector<int>&num)
