@@ -9,7 +9,6 @@ struct TreeNode {
      TreeNode *right;
      TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
-
 TreeNode* flatten2(TreeNode* root)
     {
         if(root == NULL) {
@@ -36,4 +35,25 @@ TreeNode* flatten2(TreeNode* root)
 
         flatten2(root);
 
+    }
+
+
+    void test()
+    {
+    	TreeNode *root = new TreeNode(1);
+    	root->left = new TreeNode(2);
+    	root->right = new TreeNode(3);
+    	flatten(root);
+
+    	while(root)
+    	{
+    		cout<<root->val<<" ";
+    		root = root->right;
+    	}
+    	cout<<endl;
+    }
+
+    int main()
+    {
+    	test();
     }

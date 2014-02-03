@@ -9,7 +9,6 @@ struct TreeNode {
      TreeNode *right;
      TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
-
 TreeNode* flatten2(TreeNode* root)
     {
         if(root == NULL) {

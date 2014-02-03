@@ -10,34 +10,37 @@ struct TreeNode {
      TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-TreeNode* flatten2(TreeNode* root)
+    void flatten(TreeNode* root, TreeNode** start, TreeNode** end)
     {
         if(root == NULL) {
-            return NULL;
+            start = NULL; end = NULL; return;
         }
 
-        TreeNode* lEnd = flatten2(root->left);
+        TreeNode* lStart = NULL, *lEnd = NULL;
+        flatten(root->left, &lStart, &lEnd);
 
-        TreeNode* rEnd = flatten2(root->right);
 
-        if(lEnd) lEnd->right = root->right;
-
-        root->right =  root->left != NULL ?  root->left: root->right;
+        TreeNode* rStart = NULL, *rEnd = NULL;
+        flatten(root->right, &rStart, &rEnd);
 
         root->left = NULL;
+        root->right = lStart == NULL ? rStart : lStart;
 
-        if(rEnd != NULL) return rEnd;
-        else if(lEnd != NULL) return lEnd;
-        else return root;
+        if(lEnd) lEnd->right = rStart;
 
+        if(rEnd) rEnd->right = NULL;
+
+        *start = root;
+        *end = rEnd == NULL ? lEnd : rEnd;
     }
 
     void flatten(TreeNode *root) {
 
-        flatten2(root);
+        TreeNode* start = NULL, *end = NULL;
+
+        flatten(root, &start, &end);
 
     }
-
 
     void test()
     {
