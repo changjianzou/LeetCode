@@ -43,19 +43,19 @@ int minimumTotal(vector<vector<int> > &triangle) {
         return min;
     }
 
-	void test()
-	{
-		vector<vector<int> > triangle(3,vector<int>(3,0));
-		triangle[0][0] = -1;
-		triangle[1][0] = 2;triangle[1][1] = 3;
-		triangle[2][0] = 1;
-		triangle[2][1] = -1;
-		triangle[2][2] = 1;
-
-		cout<<minimumTotal(triangle)<<endl;
-	}
-
-	int main()
-	{
-		test();
-	}
+//	void test()
+//	{
+//		vector<vector<int> > triangle(3,vector<int>(3,0));
+//		triangle[0][0] = -1;
+//		triangle[1][0] = 2;triangle[1][1] = 3;
+//		triangle[2][0] = 1;
+//		triangle[2][1] = -1;
+//		triangle[2][2] = 1;
+//
+//		cout<<minimumTotal(triangle)<<endl;
+//	}
+//
+//	int main()
+//	{
+//		test();
+//	}
