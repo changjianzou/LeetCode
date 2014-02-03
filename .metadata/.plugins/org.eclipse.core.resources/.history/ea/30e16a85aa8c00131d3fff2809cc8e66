@@ -1,0 +1,39 @@
+struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    void flatten(TreeNode* root, TreeNode* start, TreeNode* end)
+    {
+        if(root == NULL) {
+            start = NULL; end = NULL; return;
+        }
+
+        TreeNode* lStart = NULL, *lEnd = NULL;
+        flatten(root->left, lStart, lEnd);
+
+        TreeNode* rStart = NULL, *rEnd = NULL;
+        flatten(root->right, rStart, rEnd);
+
+        root->left = NULL;
+        root->right = lStart == NULL ? rStart : lStart;
+
+        if(lEnd) lEnd->right = rStart;
+
+        if(rEnd) rEnd->right = NULL;
+
+        start = root;
+        end = rEnd == NULL ? lEnd : rEnd;
+    }
+
+    void flatten(TreeNode *root) {
+
+        TreeNode* start = NULL, *end = NULL;
+
+        flatten(root, start, end);
+
+    }
