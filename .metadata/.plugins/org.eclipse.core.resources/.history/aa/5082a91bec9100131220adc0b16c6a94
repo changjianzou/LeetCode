@@ -9,6 +9,7 @@ struct ListNode {
 
     ListNode *removeNthFromEnd(ListNode *head, int n) {
 
+    	 ListNode *removeNthFromEnd(ListNode *head, int n) {
 
     	        ListNode *dummy = new ListNode(0);
 
@@ -26,5 +27,5 @@ struct ListNode {
     	        prev->next = prev->next->next;
 
     	        return dummy->next;
-
+    	    }
     }
