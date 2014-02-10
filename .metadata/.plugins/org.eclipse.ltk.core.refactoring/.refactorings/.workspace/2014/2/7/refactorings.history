@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Rocket_Fuel/Rocket_Fuel_Naive.cpp&apos;" deleteContents="false" description="Delete resource &apos;Rocket_Fuel/Rocket_Fuel_Naive.cpp&apos;" element1="/Rocket_Fuel/Rocket_Fuel_Naive.cpp" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1391993415641"/>
+</session>

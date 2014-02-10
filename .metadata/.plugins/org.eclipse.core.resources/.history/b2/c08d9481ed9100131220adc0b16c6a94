@@ -209,10 +209,11 @@ void raceRater()
 
 	//fill in the buckets and compute scores
 	fill_buckets(buckets, data);
-
-	//sorting according to scores and ids
+//
+//	//sorting according to scores and ids
 	sort(data.begin(), data.end(), comp_score);
-
+////
+////	//output
 	printScore(data);
 
 }

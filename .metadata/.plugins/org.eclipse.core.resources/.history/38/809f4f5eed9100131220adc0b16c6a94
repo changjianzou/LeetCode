@@ -19,6 +19,7 @@ struct Racer{
 
 struct Bucket{
 	vector<long long> bucket;
+	int cnt;
 	long long start;
 	long long end;
 };
@@ -79,14 +80,22 @@ void importData(string in_name, string out_name,  vector<Racer> &data, vector<Ra
 //ascending
 bool comp_start(const Racer &r1, const Racer &r2)
 {
-	return r1.start < r2.start;
+	if( r1.start < r2.start ) return true;
+
+	if( r1.start == r2.start ) return r1.id < r2.id;
+
+	return false;
 }
 
 //comparator according to ending time
 //ascending
 bool comp_end(const Racer &r1, const Racer &r2)
 {
-	return r1.end < r2.end;
+	if( r1.end < r2.end ) return true;
+
+	if( r1.end == r2.end ) return r1.id < r2.id;
+
+	return false;
 }
 
 //comparator according to score
@@ -110,6 +119,7 @@ void init_buckets(vector<Bucket> &buckets, vector<Racer> &data)
 	for(int i = 0; i < b; i++)
 	{
 		buckets.push_back(Bucket());
+		buckets[i].cnt = 0;
 		buckets[i].start = data[i*m].start;
 		buckets[i].end = data[i*m + m - 1].start;
 	}
@@ -159,6 +169,7 @@ int get_bucket(vector<Bucket> &buckets, long long time){
 	return m;
 }
 
+void printBuckets(vector<Bucket> &buckets);
 
 void fill_buckets(vector<Bucket> &buckets, vector<Racer> &data)
 {
@@ -190,6 +201,17 @@ void printScore(vector<Racer> &data)
 	}
 }
 
+void printBuckets(vector<Bucket> &buckets){
+	int n = buckets.size();
+	int cnt = 0;
+	for(int i = 0; i < n; i++)
+	{
+		cnt += buckets[i].bucket.size();
+	}
+	cout<<cnt<<endl;
+
+}
+
 void raceRater()
 {
 	//import data
@@ -209,10 +231,11 @@ void raceRater()
 
 	//fill in the buckets and compute scores
 	fill_buckets(buckets, data);
-
-	//sorting according to scores and ids
+//
+//	//sorting according to scores and ids
 	sort(data.begin(), data.end(), comp_score);
-
+////
+////	//output
 	printScore(data);
 
 }
