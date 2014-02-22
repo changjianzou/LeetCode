@@ -1,0 +1,54 @@
+#include<stdlib.h>
+struct ListNode {
+     int val;
+     ListNode *next;
+     ListNode(int x) : val(x), next(NULL) {}
+};
+
+    ListNode* reverse(ListNode* head){
+
+        ListNode* prev = NULL, *curr = head, *temp = NULL;
+
+        while(curr){
+            temp = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = temp;
+        }
+
+        return prev;
+    }
+
+    void reorderList(ListNode *head) {
+
+        if(head == NULL || head->next == NULL) return;
+
+        //find the middle point
+        ListNode* slow = head, *fast = head->next;
+
+        while(fast->next && fast->next->next)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        ListNode* l = head, *r = slow->next, *dummy = new ListNode(0), *curr = dummy;
+
+        slow->next = NULL;
+
+        r = reverse(r);
+
+        while(l && r){
+
+            curr->next = l;
+            curr = curr->next;
+
+            curr->next = r;
+            curr = curr->next;
+
+            l = l->next; r = r->next;
+        }
+
+
+        if(r) curr->next = r;
+    }
